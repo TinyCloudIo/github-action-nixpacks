@@ -41,7 +41,7 @@ repository_license() {
 }
 
 BUILD_CMD="nixpacks build $INPUT_CONTEXT"
-GHCR_IMAGE_NAME="ghcr.io/$GITHUB_REPOSITORY"
+# GHCR_IMAGE_NAME="ghcr.io/$GITHUB_REPOSITORY"
 
 # Incorporate provided input parameters from actions.yml into the Nixpacks build command
 if [ -n "${INPUT_TAGS}" ]; then
