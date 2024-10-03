@@ -166,13 +166,13 @@ function build_and_push_multiple_architectures() {
   echo "Constructing manifest and pushing to registry..."
 
   # now, with all architectures built locally, we can construct a manifest and push to the registry
-  for tag in "${TAGS[@]}"; do
-    local manifest_creation="docker manifest create $tag ${manifest_list[@]}"
-    echo "Creating manifest: $manifest_creation"
-    eval "$manifest_creation"
+  # for tag in "${TAGS[@]}"; do
+  #   local manifest_creation="docker manifest create $tag ${manifest_list[@]}"
+  #   echo "Creating manifest: $manifest_creation"
+  #   eval "$manifest_creation"
 
-    docker manifest push "$tag"
-  done
+  #   docker manifest push "$tag"
+  # done
 }
 
 if [ "${#PLATFORMS[@]}" -gt 1 ]; then
