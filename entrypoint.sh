@@ -41,7 +41,7 @@ repository_license() {
 }
 
 BUILD_CMD="nixpacks build $INPUT_CONTEXT"
-# GHCR_IMAGE_NAME="ghcr.io/$GITHUB_REPOSITORY"
+
 
 # Incorporate provided input parameters from actions.yml into the Nixpacks build command
 if [ -n "${INPUT_TAGS}" ]; then
@@ -50,7 +50,7 @@ else
   # if not tags are provided, assume ghcr.io as the default registry
   echo "No tags provided. Defaulting to ghcr.io registry."
   BUILD_DATE_TIMESTAMP=$(date +%s)
-  TAGS=("$GHCR_IMAGE_NAME:$GIT_SHA" "$GHCR_IMAGE_NAME:latest" "$GHCR_IMAGE_NAME:$BUILD_DATE_TIMESTAMP")
+  TAGS=("$IMAGE_NAME:$GIT_SHA" "$IMAGE_NAME:latest" "$IMAGE_NAME:$BUILD_DATE_TIMESTAMP")
 fi
 
 if [ -n "${INPUT_LABELS}" ]; then
@@ -141,7 +141,7 @@ function build_and_push_multiple_architectures() {
     local build_cmd=$BUILD_CMD
     # Replace '/' with '-'
     local normalized_platform=${platform//\//-}
-    local architecture_image_name=${GHCR_IMAGE_NAME}:$normalized_platform
+    local architecture_image_name=${IMAGE_NAME}:$normalized_platform
 
     build_cmd="$build_cmd --platform $platform"
     build_cmd="$build_cmd --tag $architecture_image_name"
