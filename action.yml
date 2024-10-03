@@ -32,6 +32,9 @@ inputs:
     description: "Boolean to determine if the built image should be pushed"
     required: false
     default: 'false'
+  repository_url:
+    description: "repo url"
+    required: true
 
 runs:
   using: 'composite'
@@ -64,7 +67,7 @@ runs:
         # username/repo
         GITHUB_REPOSITORY: ${{ github.repository }}
         # github.com/username/repo
-        GITHUB_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+        GITHUB_REPOSITORY_URL: ${{ input.repository_url }}
         # for author extraction
         GH_TOKEN: ${{ github.token }}
 
