@@ -171,7 +171,7 @@ function build_and_push_multiple_architectures() {
     echo "Creating manifest: $manifest_creation"
     eval "$manifest_creation"
 
-    docker manifest push "$tag"
+    # docker manifest push "$tag"
   done
 }
 
